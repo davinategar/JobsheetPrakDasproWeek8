@@ -42,3 +42,5 @@ public class Star07 {
 ```
 
 Result:
+
+![result experiment1 n5 jobsheet8](result-experiment1-n5-jobsheet8.png)
