@@ -121,3 +121,65 @@ public class Rectangle07 {
 ```
 
 Result:
+
+![result-experiment2-3 6-jobsheet8](result-experiment2-3 6-jobsheet8.png)
+
+![result-experiment2-4 2-jobsheet8](result-experiment2-4 2-jobsheet8.png)
+
+![result-experiment2-1 5-jobsheet8](result-experiment2-1 5-jobsheet8.png)
+
+**Question**
+
+1. Explain the function of the variables i and j in the program.
+
+Answer:
+
+* i is used as a counter for the outer loop. It controls the number of rows.
+* j is used as a counter for the inner loop. It controls the number of columns.
+
+The outer loop controls how many lines are printed, while the inner loop controls how many stars are printed in each line.
+
+2. How many times are the outer loop, the inner loop, and the statement print("*") executed for rows = 4 and columns = 7?
+
+Answer:
+
+* Outer loop: 4 times.
+* Inner loop: 28 times (4 × 7).
+* ```System.out.print("*")```: 28 times.
+
+The outer loop runs 4 times because there are 4 rows. For each row, the inner loop runs 7 times because there are 7 columns. Therefore, the print statement runs 28 times.
+
+3. What happens if the bounds of the outer and inner loops are swapped (the outer loop uses columns and the inner loop uses rows)? Use rows = 3 and columns = 6 to explain.
+
+Answer: 
+
+The rectangle will have 6 rows and 3 columns instead of 3 rows and 6 columns.
+
+```
+***
+***
+***
+***
+***
+***
+```
+
+The outer loop runs 6 times because it uses columns. The inner loop runs 3 times because it uses rows. Therefore, the rectangle becomes taller and narrower.
+
+4. Explain the effect of removing System.out.println(); after the inner loop.
+
+The stars will be printed in one continuous line without moving to a new line.
+
+```System.out.println();``` moves the cursor to the next line after each row is printed. If it is removed, all stars will appear in one line. For example, with rows = 3 and columns = 4:
+
+Without ```System.out.println();```:
+
+```
+************
+```
+
+## 2.3 Experiment 3: Debugging a Star Triangle – Nested WHILE
+
+**Experiment Steps**
+
+the code:
