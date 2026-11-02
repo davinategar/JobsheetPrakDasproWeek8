@@ -214,6 +214,109 @@ Result:
 
 ![result-experiment3-1-jobsheet8](result-experiment3-1-jobsheet8.png)
 
+![result-experiment3-3-jobsheet8](result-experiment3-3-jobsheet8.png)
 
+**5. Run the program again with n = 5, then observe the result:**
 
+```
+[i=0]
+[i=1] *
+[i=2] **
+[i=3] ***
+[i=4] ****
+[i=5] *****
+```
 
+a. how many times does the outer loop run? Is this the same as the desired number ofrows? 
+
+Answer: The outer loop runs 6 times, from ```i = 0``` to ```i = 5```. This is not the same as the desired 5 rows because the loop starts from 0.
+
+b. How many * characters are printed when ```i = 0```?
+
+Answer: Zero (*) characters are printed because the condition ```j < i``` is false when ```i = 0```.
+
+c. Why are all the characters displayed on a single line?
+
+Answer: Because there is no ```System.out.println();``` after the inner loop. The program does not move to a new line after printing each row.
+
+**6. Fix the code one step at a time, and run the program after each fix:**
+
+a. Add ```System.out.println();``` after the inner loop finishes, before ```i++```.
+
+Output:
+
+```
+[i=0]
+
+[i=1] *
+[i=2] **
+[i=3] ***
+[i=4] ****
+[i=5] *****
+```
+
+Answer: Yes, there is still one empty line because the outer loop starts from i = 0. When i = 0, no asterisk is printed.
+
+b. Change the initialization and/or condition of the outer loop so that the loop runs exactly n times without any empty lines.
+
+Change:
+
+```
+int i = 0;
+while (i <= n) {
+```
+
+Into:
+
+```
+int i = 1;
+while (i <= n) {
+```
+
+Answer: The initialization is changed from ```i = 0``` to ```i = 1```. This makes the loop run exactly 5 times and removes the empty line.
+
+Output:
+
+```
+[i=1] *
+[i=2] **
+[i=3] ***
+[i=4] ****
+[i=5] *****
+```
+
+**7. Once the output matches the target output, delete the debug line(s).**
+
+Delete this debug line:
+
+```System.out.print("[i=" + i + "] ");```
+
+Final code after removing the debug line:
+
+```
+import java.util.Scanner;
+
+public class Triangle07 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the value of n = ");
+        int n = sc.nextInt();
+
+        int i = 1;
+        while (i <= n) {
+            int j = 0;
+            while (j < i) {
+                System.out.print("*");
+                j++;
+            }
+            System.out.println();
+            i++;
+        }
+
+        sc.close();
+    }
+}
+```
+
+Answer: The debug line is removed because it is only used to check the value of i. The program now prints the correct triangle.
