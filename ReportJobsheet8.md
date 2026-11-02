@@ -559,6 +559,8 @@ public class Task107 {
 
 Result:
 
+![result-task1-jobsheet8](result-task3-jobsheet8.png)
+
 ## 2. Assignment 2: Multiplication Table
 
 Write a program that displays a multiplication table of size n × n using nested FOR or WHILEloops. The value of n is at least 3. Each position displays the product of its row number andcolumn number. Arrange the spacing so that the output is neat, then display the sum of allthe numbers in the table. Save the program with the file name: Task2StudentNo.java.For n = 4:
@@ -602,6 +604,8 @@ public class Task207 {
 ```
 
 Result:
+
+![result-task2-jobsheet8](result-task3-jobsheet8.png)
 
 ## 3. Assignment 3: Sales Recap for Several Stores
 
@@ -675,3 +679,5 @@ public class Task307 {
 ```
 
 Result: 
+
+![result-task3-jobsheet8](result-task3-jobsheet8.png)
