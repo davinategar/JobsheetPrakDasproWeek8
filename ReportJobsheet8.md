@@ -320,3 +320,140 @@ public class Triangle07 {
 ```
 
 Answer: The debug line is removed because it is only used to check the value of i. The program now prints the correct triangle.
+
+![fix-triangle-pattern-jobsheet8](fix-triangle-pattern-jobsheet8.png)
+
+**8. Modify the program so that, after the triangle above is printed, it also prints an inverted triangle.**
+
+Code for the inverted triangle:
+
+```
+
+import java.util.Scanner;
+
+public class Triangle07 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the value of n = ");
+        int n = sc.nextInt();
+
+        int i = n;
+        while (i >= 1) {
+            int j = 0;
+            while (j < i) {
+                System.out.print("*");
+                j++;
+            }
+            System.out.println();
+            i--;
+        }
+
+        sc.close();
+    }
+}
+```
+
+Result:
+
+![result-experiment3-9-jobsheet8](result-experiment3-9-jobsheet8.png)
+
+**Question**
+
+1. Identify the mismatches in the initial output, and at least two fixes needed to produce anested triangle pattern.
+
+Answer:
+
+The initial output does not match the desired triangle pattern because all characters are printed on one line and there is an empty line at the beginning. Two fixes are needed:
+
+* Add ```System.out.println();``` after the inner loop to move to a new line.
+* Change the initialization from ```i = 0``` to ```i = 1``` to remove the empty first line.
+
+2. Explain the roles of the variables i and j. Why must the value of j be reset to 0 in every iteration of the outer loop? What happens if j is not reset?
+
+Answer:
+
+* i controls the number of rows in the triangle.
+* j controls the number of stars printed in each row.
+
+The value of j must be reset to 0 in every iteration of the outer loop because each row needs to start counting from zero. If j is not reset, the inner loop will not print the correct number of stars because the value of j continues from the previous iteration.
+
+3. Explain the changes to the initialization, the condition, and the update of the outer loop that are needed to form the inverted triangle.
+
+Answer:
+
+To create an inverted triangle, three changes are needed:
+
+1. Initialization: Change ```i = 1``` to ```i = n``` so the triangle starts with the maximum number of stars.
+2. Condition: Change ```i <= n``` to ```i >= 1``` so the loop continues until i reaches 1.
+3. Update: Change ```i++``` to ```i--``` so the number of stars decreases by one in each row.
+
+Example output when n = 5:
+
+![result-experiment3-9-jobsheet8](result-experiment3-9-jobsheet8.png)
+
+## 2.4 Experiment 4: Case Study of Group Project Scores
+
+**Experiment Steps**
+
+the code: 
+
+```
+import java.util.Scanner;
+
+public class GroupScore07 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of groups : ");
+        int numGroups = sc.nextInt();
+        System.out.print("Enter the number of graders: ");
+        int numGraders = sc.nextInt();
+
+        if (numGroups <= 0 || numGraders <= 0) {
+            System.out.println("Groups and graders must be > 0.");
+        } else {
+            int groupNo = 1;
+            double highestAverage = -1;
+            int bestGroup = 0;
+
+            while (groupNo <= numGroups) {
+                System.out.println("Group " + groupNo);
+                double totalScore = 0;
+
+                for (int j = 1; j <= numGraders; j++) {
+                    int score;
+                    do {
+                        System.out.print("  Score from Grader " + j + ": ");
+                        score = sc.nextInt();
+                        if (score < 0 || score > 100) {
+                            System.out.println("  Score must be 0-100. Retry!");
+                        }
+                    } while (score < 0 || score > 100);
+                    totalScore += score;
+                }
+
+                double averageScore = totalScore / numGraders;
+                System.out.println("Group " + groupNo
+                        + ": average score = " + averageScore);
+
+                if (averageScore > highestAverage) {
+                    highestAverage = averageScore;
+                    bestGroup = groupNo;
+                }
+
+                groupNo++;
+            }
+
+            System.out.println("==============================");
+            System.out.println("Best group      : " + bestGroup);
+            System.out.println("Highest average : " + highestAverage);
+        }
+
+        sc.close();
+    }
+}
+```
+
+Result:
+
