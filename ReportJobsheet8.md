@@ -457,3 +457,221 @@ public class GroupScore07 {
 
 Result:
 
+![result-experiment4-1-jobsheet8](result-experiment4-1-jobsheet8.png)
+
+**Questions**
+
+1. Why must totalScore be reset inside the outer loop, but highestAverage must not be reset for each group?
+  
+Answer:
+
+```totalScore``` must be reset to 0 for each group because every group has its own total score. However, ```highestAverage``` must not be reset because it stores the highest average score among all groups. If ```highestAverage``` is reset for each group, the program cannot compare the average scores correctly.
+
+2. For 3 groups and 2 graders (without any invalid input), how many times is the body of the FOR loop executed in total?
+
+Answer:
+
+The FOR loop is executed 6 times (3 × 2).
+
+Explanation: There are 3 groups, and each group has 2 graders. Each grader gives one score, so the FOR loop runs 6 times in total.
+
+3. What happens if totalScore is declared as int and the average is calculated using integer division? Give an example of values.
+
+Answer:
+
+If ```totalScore``` is declared as ```int``` and integer division is used, the decimal part of the average will be lost.
+
+Example: 
+
+```
+int totalScore = 85 + 90;
+int averageScore = totalScore / 2;
+```
+
+The result is: ```Average = 87```
+
+The correct average should be 87.5, but integer division removes the decimal part.
+
+4. Why is highestAverage given the initial value -1 rather than 0? Give an example of input that produces a wrong result if the initial value were 0.
+
+Answer:
+
+```highestAverage``` is initialized to -1 because the lowest possible average score is 0. If it is initialized to 0, the program may not update the ```bestGroup``` when all groups have an average score of 0.
+
+Example:
+
+* Group 1 average = 0
+* Group 2 average = 0
+* Group 3 average = 0
+
+If ```highestAverage``` = 0, the condition ```averageScore > highestAverage``` is false. Therefore, ```bestGroup``` remains 0, which is incorrect because there are 3 groups. By using -1, the first group's average will be stored correctly.
+
+5. This program has three levels of loops. Name each type of loop and its role.
+
+Answer:
+
+The program uses three types of loops:
+
+1. **WHILE loop (outer loop)**: Controls the number of groups.
+2. **FOR loop (middle loop)**: Controls the number of graders and collects their scores.
+3. **DO-WHILE loop (inner loop)**: Checks whether the score is between 0 and 100. If the score is invalid, the program asks the user to enter it again.
+
+# Assignment
+
+## 1. Assignment 1: Nested Number Pattern
+
+Write a program that prints a number pattern from 1 up to the row number. Enter an integern (n is at least 1). The first row prints 1, the second row prints 1 2, and so on up to row n. Afterthe pattern is complete, display the total number of digits that have been printed. Save thefile with the name: Task1StudentNo.java.For n = 5:
+
+Answer:
+
+The Code:
+
+```
+import java.util.Scanner;
+
+public class Task107 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the value of n = ");
+        int n = sc.nextInt();
+
+        if (n < 1) {
+            System.out.println("n must be at least 1.");
+        } else {
+            int total = 0;
+
+            for (int row = 1; row <= n; row++) {
+                for (int num = 1; num <= row; num++) {
+                    System.out.print(num + " ");
+                    total++;
+                }
+                System.out.println();
+            }
+
+            System.out.println("Total numbers printed: " + total);
+        }
+
+        sc.close();
+    }
+}
+```
+
+Result:
+
+## 2. Assignment 2: Multiplication Table
+
+Write a program that displays a multiplication table of size n × n using nested FOR or WHILEloops. The value of n is at least 3. Each position displays the product of its row number andcolumn number. Arrange the spacing so that the output is neat, then display the sum of allthe numbers in the table. Save the program with the file name: Task2StudentNo.java.For n = 4:
+
+_hint: to align the numbers to the right, use ```System.out.printf("%4d", result);```, which printsa number with a width of 4 characters, or use the tab character ```"\t"``` as a separator._
+
+Answer:
+
+The code:
+
+```
+import java.util.Scanner;
+
+public class Task207 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the value of n = ");
+        int n = sc.nextInt();
+
+        if (n < 3) {
+            System.out.println("n must be at least 3.");
+        } else {
+            int sum = 0;
+
+            for (int row = 1; row <= n; row++) {
+                for (int col = 1; col <= n; col++) {
+                    int result = row * col;
+                    System.out.printf("%4d", result);
+                    sum += result;
+                }
+                System.out.println();
+            }
+
+            System.out.println("Total of all numbers: " + sum);
+        }
+
+        sc.close();
+    }
+}
+```
+
+Result:
+
+## 3. Assignment 3: Sales Recap for Several Stores
+
+A shopping center has several stores. Each store serves a number of customers on the sameday, and each customer buys several items. The program asks for the number of stores, thenthe number of customers at each store, and the number of items bought by each customer.Calculate and display the total number of customers and the total number of items for eachstore, the total number of items across all stores, and the number of the store with the mostitems. If several stores share the highest value, display the store with the smallest number.Save the program with the file name: Task3StudentNo.java.
+
+Requirements: the number of stores is at least 1. The number of customers and the numberof items per customer may be 0, but must not be negative. Use nested loops. The data doesnot need to be stored one by one; it is sufficient to accumulate it into the total variables.Example: Store 1 has 2 customers who bought 3 and 2 items; Store 2 has 3 customers whobought 1, 4, and 2 items.
+
+Answer:
+
+The code:
+
+```
+import java.util.Scanner;
+
+public class Task307 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of stores: ");
+        int numStores = sc.nextInt();
+
+        if (numStores < 1) {
+            System.out.println("Number of stores must be at least 1.");
+        } else {
+            int totalAllItems = 0;
+            int maxItems = -1;
+            int bestStore = 0;
+
+            for (int store = 1; store <= numStores; store++) {
+                int numCustomers;
+                do {
+                    System.out.print("Store " + store + " - number of customers: ");
+                    numCustomers = sc.nextInt();
+                    if (numCustomers < 1) {
+                        System.out.println("Customers must be at least 1. Retry!");
+                    }
+                } while (numCustomers < 1);
+
+                int storeItems = 0;
+
+                for (int c = 1; c <= numCustomers; c++) {
+                    int items;
+                    do {
+                        System.out.print("  Customer " + c + " - items bought: ");
+                        items = sc.nextInt();
+                        if (items < 0) {
+                            System.out.println("  Items cannot be negative. Retry!");
+                        }
+                    } while (items < 0);
+                    storeItems += items;
+                }
+
+                System.out.println("Store " + store + " - customers: " + numCustomers
+                        + ", total items: " + storeItems);
+
+                totalAllItems += storeItems;
+
+                if (storeItems > maxItems) {
+                    maxItems = storeItems;
+                    bestStore = store;
+                }
+            }
+
+            System.out.println("Total items across stores: " + totalAllItems);
+            System.out.println("Store with the most items: " + bestStore);
+        }
+
+        sc.close();
+    }
+}
+```
+
+Result: 
