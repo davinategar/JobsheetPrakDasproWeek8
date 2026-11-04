@@ -13,9 +13,9 @@ public class Task207 {
             int sum = 0;
 
             for (int row = 1; row <= n; row++) {
-                for (int col = 1; col <= n; col++) {
+                for (int col = 1; col <= n; col++) {    //col merupakan variabel penghitung (counter) yang digunakan untuk mengatur jumlah kolom atau berapa kali perintah dijalankan.
                     int result = row * col;
-                    System.out.printf("%4d", result);
+                    System.out.printf("%55d", result);   //%4d digunakan untuk mengatur lebar tempat (spacing) saat menampilkan angka integer menggunakan printf().
                     sum += result;
                 }
                 System.out.println();
@@ -27,3 +27,8 @@ public class Task207 {
         sc.close();
     }
 }
+//Kesimpulannya:
+//- int sum = 0; → membuat variabel penampung total dengan nilai awal 0.
+//- sum += result; → menambahkan setiap hasil perkalian ke total.
+//- System.out.println("Total of all numbers: " + sum); → menampilkan hasil penjumlahan seluruh angka.
+//Jadi, fungsi sum adalah menghitung total dari semua hasil perkalian dalam nested loop (perulangan bersarang).

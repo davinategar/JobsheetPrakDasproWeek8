@@ -11,7 +11,7 @@ public class Task307 {
             System.out.println("Number of stores must be at least 1.");
         } else {
             int totalAllItems = 0;
-            int maxItems = -1;
+            int maxItems = -1;  //Berfungsi untuk menyimpan jumlah barang terbanyak yang berhasil dicapai oleh suatu toko.
             int bestStore = 0;
 
             for (int store = 1; store <= numStores; store++) {
@@ -56,3 +56,7 @@ public class Task307 {
         sc.close();
     }
 }
+
+//total biasanya digunakan untuk menghitung keseluruhan.
+//max biasanya digunakan untuk mencari nilai terbesar.
+//best biasanya digunakan untuk menyimpan pilihan atau hasil terbaik.
